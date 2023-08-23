@@ -36,11 +36,12 @@ function openNav() {
   <main
     :style="{
       'background-image':
-        'url(' + getImg($route.fullPath != '/' ? $route.fullPath.substring(1) : 'home') + ')'
+        'url(' + getImg($route.fullPath === '/' ? 'home' : $route.fullPath.substring(1)) + ')'
     }"
   >
     <header>
       <img src="./assets/shared/logo.svg" alt="logo" />
+      <div :class="{ hide: media === 'mobile', hr: true }"></div>
       <img
         src="./assets/shared/icon-hamburger.svg"
         alt="hamburger"
