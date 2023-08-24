@@ -122,6 +122,7 @@ main {
   transition: all 0.5s ease-in-out;
   color: white;
   min-height: 100vh;
+  padding-bottom: 30vh;
 }
 
 section {
@@ -161,6 +162,10 @@ h3 {
   gap: 1rem;
   align-items: center;
   padding-top: 2rem;
+}
+
+li:not(span) {
+  font-weight: bold;
 }
 
 h3 span {
@@ -207,8 +212,8 @@ header img {
 header nav#desktop-nav {
   width: 50%;
   background: rgba(83, 101, 136, 0.32);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   padding: 0 4rem;
 }
 
@@ -216,7 +221,7 @@ header nav {
   width: 50%;
   background: rgba(83, 101, 136, 0.32);
   backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(5px);
   padding: 0 4rem;
 }
 
@@ -268,10 +273,10 @@ li {
   text-transform: uppercase;
   font-size: 1rem;
   letter-spacing: 2.75px;
+  color: white;
 }
 
 li:hover {
-  /* border-bottom: 2px solid var(--secend-color); */
   cursor: pointer;
 }
 

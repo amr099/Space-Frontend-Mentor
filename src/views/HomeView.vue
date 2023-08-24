@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 <template>
   <section>
     <div class="content">
-      <h2 class="uppercase">So, you want to travel to</h2>
+      <h2>So, you want to travel to</h2>
       <h1 class="space uppercase">Space</h1>
       <p>
         Let’s face it; if you want to go to space, you might as well genuinely go to outer space and
@@ -30,6 +30,10 @@ section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.content > h2 {
+  font-family: var(--main-font);
 }
 
 div {

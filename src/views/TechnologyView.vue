@@ -104,6 +104,7 @@ nav > div {
 
 nav > div:hover {
   cursor: pointer;
+  border: 1px solid white;
 }
 .content {
   width: 50%;
@@ -114,10 +115,10 @@ nav > div:hover {
   height: 60vh;
   background-size: contain;
   background-repeat: no-repeat;
-  transition: all 0.5s ease-in-out;
   position: absolute;
   bottom: 0;
   right: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 .selected {
