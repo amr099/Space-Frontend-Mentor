@@ -70,6 +70,7 @@ function load(i) {
     <div
       class="img"
       :style="{ 'background-image': 'url(' + getImg(data[index].images.png) + ')' }"
+      :key="data[index].images.png"
     ></div>
   </section>
 </template>

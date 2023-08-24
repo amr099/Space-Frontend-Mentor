@@ -38,6 +38,7 @@ function openNav() {
       'background-image':
         'url(' + getImg($route.fullPath === '/' ? 'home' : $route.fullPath.substring(1)) + ')'
     }"
+    :key="name"
   >
     <header>
       <img src="./assets/shared/logo.svg" alt="logo" />

@@ -68,6 +68,7 @@ function load(i) {
       <div
         class="img"
         :style="{ 'background-image': 'url(' + getImg(planetData?.images.png) + ')' }"
+        :key="planetData?.images.png"
       ></div>
       <div class="details">
         <nav>
