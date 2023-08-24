@@ -112,6 +112,7 @@ function openNav() {
 }
 
 body {
+  background-color: rgb(15, 15, 15);
   font-family: var(--main-font);
 }
 
