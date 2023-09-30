@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+// import { MobileNav } from './components/MobileNav.vue'
+// import { DesktopNav } from './components/DesktopNav.vue'
 
 let media = ref('desktop')
-let showNav = ref(false)
+let mobNav = ref(false)
 
 window.addEventListener('resize', () => {
   let m = window.innerWidth
@@ -25,10 +27,10 @@ function getImg(name) {
 }
 
 function closeNav() {
-  showNav.value = false
+  mobNav.value = false
 }
 function openNav() {
-  showNav.value = true
+  mobNav.value = true
 }
 </script>
 
@@ -42,14 +44,14 @@ function openNav() {
   >
     <header>
       <img src="./assets/shared/logo.svg" alt="logo" />
-      <div :class="{ hide: media === 'mobile', hr: true }"></div>
+      <div class="hr" v-show="media === 'desktop'"></div>
       <img
         src="./assets/shared/icon-hamburger.svg"
         alt="hamburger"
-        :class="{ hide: media != 'mobile' }"
+        v-show="media === 'mobile'"
         @click="openNav"
       />
-      <nav :class="{ hide: !showNav }" id="mobile-nav">
+      <nav v-show="mobNav" id="mobile-nav">
         <ul>
           <li class="close" @click="closeNav">
             <img src="./assets/shared/icon-close.svg" alt="" />
@@ -122,7 +124,6 @@ main {
   transition: all 0.5s ease-in-out;
   color: white;
   min-height: 100vh;
-  padding-bottom: 30vh;
 }
 
 section {
