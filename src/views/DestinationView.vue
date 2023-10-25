@@ -127,7 +127,6 @@ ul{
 
 .img {
   width: 40%;
-  height: 50vh;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -181,7 +180,8 @@ li{
     width: 100%;
   }
   .img {
-    margin: 0 auto;
+    width: 100%;
+    height: 30vh;
   }
   ul{
     justify-content: space-between;

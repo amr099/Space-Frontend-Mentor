@@ -33,6 +33,7 @@ function closeNav(){
   >
     <header>
       <img src="./assets/shared/logo.svg" alt="logo" class="logo" />
+
       <div class="hr"></div>
       
       <img
@@ -104,6 +105,35 @@ section {
   display: flex;
 }
 
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -159,13 +189,6 @@ a{
   height: 1px;
   width: 40%;
   background-color: rgb(230 238 254 / 32%);
-  position: relative;
-  left: 3rem;
-}
-
-.container {
-  width: 70%;
-  margin: 0 auto;
 }
 
 header {
@@ -269,4 +292,6 @@ a > span{
     font-size: 0.9rem;
   }
 }
+
+
 </style>

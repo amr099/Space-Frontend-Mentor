@@ -63,6 +63,7 @@ function load(i) {
     ></div>
   </section>
 </template>
+
 <style scoped>
 section {
   color: white;
@@ -76,6 +77,13 @@ ul {
   gap: 2rem;
 }
 
+h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--dark-color);
+  letter-spacing: 2.75px;
+}
+
 h5 {
   font-size: 1rem;
   margin-bottom: 2rem;
@@ -84,12 +92,6 @@ h5 {
   letter-spacing: 2.75px;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  color: var(--dark-color);
-  letter-spacing: 2.75px;
-}
 li{
   list-style:none ;
   width: 70px;
@@ -115,7 +117,7 @@ li{
 .img {
   width: 30%;
   height: 60vh;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
   bottom: 0;
@@ -150,7 +152,7 @@ li{
     order: 1;
     width: 100%;
     height: 100vh;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
   }
 }
@@ -158,12 +160,19 @@ li{
 @media (max-width: 769px) {
   .img {
     height: 50vh;
+    background-size: contain;
   }
   h1 {
     font-size: 1.6rem;
   }
   h5{
     font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.2rem
   }
 }
 </style>
