@@ -60,12 +60,12 @@ function load(i) {
           {{ data[index].bio }}
         </p>
       </div>
-      <nav>
-        <div :class="{ selected: index === 0 }" @click="load(0)"></div>
-        <div :class="{ selected: index === 1 }" @click="load(1)"></div>
-        <div :class="{ selected: index === 2 }" @click="load(2)"></div>
-        <div :class="{ selected: index === 3 }" @click="load(3)"></div>
-      </nav>
+      <ul>
+        <li :class="{ selected: index === 0 }" @click="load(0)"></li>
+        <li :class="{ selected: index === 1 }" @click="load(1)"></li>
+        <li :class="{ selected: index === 2 }" @click="load(2)"></li>
+        <li :class="{ selected: index === 3 }" @click="load(3)"></li>
+      </ul>
     </div>
     <div
       class="img"
@@ -75,11 +75,6 @@ function load(i) {
   </section>
 </template>
 <style scoped>
-section {
-  color: white;
-  justify-content: space-between;
-}
-
 h1 {
   font-size: 3rem;
 }
@@ -88,15 +83,16 @@ p {
   font-size: 1.2rem;
 }
 
-nav {
+ul {
   display: flex;
   gap: 2rem;
   justify-self: flex-end;
 }
 
 .content {
-  width: 40%;
+  width: min-content;
   padding-top: 5rem;
+  padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
   gap: 6rem;
@@ -113,23 +109,24 @@ nav {
   height: 70vh;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   transition: all 0.5s ease-in-out;
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
-nav > div {
+li {
+  list-style: none;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: white;
   opacity: 0.2;
   transition: all 0.5s ease-in-out;
-}
-
-nav > div:hover {
-  cursor: pointer;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .selected {
@@ -149,14 +146,14 @@ nav > div:hover {
     text-align: center;
     justify-content: center;
   }
-  nav {
+  ul {
     justify-content: center;
   }
   .img {
     position: relative;
-    width: 70%;
-    margin: 0 auto;
-    background-size: cover;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
   }
 }
 
@@ -165,12 +162,10 @@ nav > div:hover {
     flex-direction: column-reverse;
     justify-content: center;
   }
-
   .content {
     flex-direction: column-reverse;
     padding-top: 0px;
   }
-
   h1 {
     font-size: 1.7rem;
   }
@@ -182,9 +177,8 @@ nav > div:hover {
     font-size: 0.8;
   }
   .img {
-    width: 100%;
     margin-top: 2rem;
-    background-size: contain;
+    height: 60vh;
   }
 }
 </style>

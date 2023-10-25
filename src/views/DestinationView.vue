@@ -51,7 +51,6 @@ const data = [
 
 function getImg(path) {
   let imageUrl = new URL(path, import.meta.url).href
-  console.log(imageUrl)
   return imageUrl
 }
 
@@ -71,14 +70,12 @@ function load(i) {
         :key="planetData?.images.png"
       ></div>
       <div class="details">
-        <nav>
           <ul>
             <li @click="load(0)" :class="{ selected: planetData.name === 'Moon' }">Moon</li>
             <li @click="load(1)" :class="{ selected: planetData.name === 'Mars' }">Mars</li>
             <li @click="load(2)" :class="{ selected: planetData.name === 'Europa' }">Europa</li>
             <li @click="load(3)" :class="{ selected: planetData.name === 'Titan' }">Titan</li>
           </ul>
-        </nav>
         <h1>{{ planetData?.name }}</h1>
         <p>
           {{ planetData?.description }}
@@ -102,38 +99,47 @@ function load(i) {
 h1 {
   font-size: 4rem;
 }
+
 p {
   padding-bottom: 3rem;
 }
+
 section {
   flex-direction: column;
   gap: 3rem;
 }
+
 .content {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
+  padding-bottom: 3rem;
+
+}
+
+ul{
+  display: flex;
+  gap: 1rem;
+  justify-content: start;
+  padding: 0;
+  padding-bottom: 3rem;
 }
 
 .img {
   width: 40%;
   height: 50vh;
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
   transition: all 0.5s ease-in-out;
 }
-
 .details {
   width: 40%;
 }
 
-ul {
-  padding: 0;
-  padding-bottom: 3rem;
-}
-
-li {
-  font-size: 1rem;
+h2,
+h4,li {
+  margin-top: 1rem;
   letter-spacing: 2px;
   font-family: var(--second-font);
   font-weight: 100;
@@ -143,18 +149,25 @@ h4 {
   font-size: 0.8rem;
 }
 
-h2,
-h4 {
-  margin: 1rem 0;
-  letter-spacing: 2px;
-  font-family: var(--second-font);
-  font-weight: 100;
+h2{
+  font-size: 1.2rem;
+}
+
+li{
+  font-size: 1.4rem;
+  margin-right: 1rem;
+  list-style: none;
+  &:hover{
+    cursor: pointer;
+  }
 }
 .info {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 3rem;
 }
-
 .selected {
   border-bottom: 1px solid white;
 }
@@ -162,29 +175,24 @@ h4 {
 @media (max-width: 1024px) {
   .content {
     flex-direction: column;
+    gap: 1rem;
+    align-items: center;
     text-align: center;
-    padding-top: 7rem;
     width: 100%;
-    margin: 0 auto;
-    padding-top: 1rem;
   }
   .img {
-    width: 50%;
-    height: 50vh;
     margin: 0 auto;
   }
-
+  ul{
+    justify-content: space-between;
+  }
   .details {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    width: 80%;
+    width: 100%;
   }
 
-  .details nav {
-    display: flex;
-    justify-content: space-around;
-  }
   h2,
   h4 {
     text-align: left;
@@ -195,23 +203,20 @@ h4 {
   .content {
     padding-top: 2rem;
   }
+  li{
+    font-size: 1rem;
+    margin-right:0.2rem ;
+  }
 
+  h2{
+    font-size: 0.8rem;
+  }
+  h4{
+    font-size: 0.6rem;
+  }
+  
   .details {
     width: 100%;
-  }
-
-  .img {
-    width: 70%;
-    height: 40vh;
-  }
-
-  li {
-    font-size: 0.7rem;
-  }
-
-  h2,
-  h4 {
-    font-size: 0.7rem;
   }
 }
 </style>

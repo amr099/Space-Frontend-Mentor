@@ -74,10 +74,11 @@ h1.space {
   section {
     flex-direction: column;
     padding-top: 5rem;
+    align-items: center;
   }
 
   h1.space {
-    font-size: clamp(15rem, 14vw + 1rem, 9.375rem);
+    font-size: clamp(12rem, 14vw + 1rem, 9.375rem);
   }
   .content {
     text-align: center;
@@ -107,6 +108,13 @@ h1.space {
 
   h2 {
     font-size: 0.9rem;
+  }
+  .explore{
+    width: 150px;
+    height: 150px;
+  }
+  .explore h1{
+    font-size: 1rem;
   }
 }
 </style>

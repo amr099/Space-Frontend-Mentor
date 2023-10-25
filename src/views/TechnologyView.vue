@@ -44,11 +44,11 @@ function load(i) {
 <template>
   <h3><span>03</span> Space Launch 101</h3>
   <section>
-    <nav>
-      <div :class="{ selected: index === 0 }" @click="load(0)">1</div>
-      <div :class="{ selected: index === 1 }" @click="load(1)">2</div>
-      <div :class="{ selected: index === 2 }" @click="load(2)">3</div>
-    </nav>
+    <ul>
+      <li :class="{ selected: index === 0 }" @click="load(0)">1</li>
+      <li :class="{ selected: index === 1 }" @click="load(1)">2</li>
+      <li :class="{ selected: index === 2 }" @click="load(2)">3</li>
+    </ul>
     <div class="content">
       <h5>The Technology...</h5>
       <h1>{{ data[index].name }}</h1>
@@ -70,7 +70,7 @@ section {
   margin-top: 10rem;
 }
 
-nav {
+ul {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -90,7 +90,8 @@ h1 {
   color: var(--dark-color);
   letter-spacing: 2.75px;
 }
-nav > div {
+li{
+  list-style:none ;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -100,20 +101,21 @@ nav > div {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  &:hover{
+    cursor: pointer;
+    border: 1px solid white;
+  }
 }
 
-nav > div:hover {
-  cursor: pointer;
-  border: 1px solid white;
-}
 .content {
-  width: 50%;
+  padding-bottom: 3rem;
+  width: min-content;
 }
 
 .img {
   width: 30%;
   height: 60vh;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
   bottom: 0;
@@ -131,7 +133,7 @@ nav > div:hover {
     flex-direction: column-reverse;
   }
 
-  nav {
+  ul {
     order: 1;
     flex-direction: row;
     justify-content: space-around;
@@ -148,17 +150,20 @@ nav > div:hover {
     order: 1;
     width: 100%;
     height: 100vh;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
   }
 }
 
 @media (max-width: 769px) {
   .img {
-    height: 40vh;
+    height: 50vh;
   }
-
   h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
+  }
+  h5{
+    font-size: 0.6rem;
   }
 }
 </style>

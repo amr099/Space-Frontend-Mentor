@@ -1,24 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
-// import { MobileNav } from './components/MobileNav.vue'
-// import { DesktopNav } from './components/DesktopNav.vue'
 
 let media = ref('desktop')
-let mobNav = ref(false)
+let nav = ref(true)
 
-window.addEventListener('resize', () => {
-  let m = window.innerWidth
-  if (m <= 1024 && m > 769) {
-    media.value = 'tablet'
-    closeNav()
-  } else if (m <= 769) {
-    media.value = 'mobile'
-  } else {
-    media.value = 'desktop'
-    closeNav()
-  }
-})
+
 
 function getImg(name) {
   let imageUrl = new URL(`./assets/${name}/background-${name}-${media.value}.jpg`, import.meta.url)
@@ -26,12 +13,15 @@ function getImg(name) {
   return imageUrl
 }
 
-function closeNav() {
-  mobNav.value = false
+function openNav(){
+  nav.value = true
 }
-function openNav() {
-  mobNav.value = true
+
+function closeNav(){
+  nav.value = false
 }
+
+
 </script>
 
 <template>
@@ -40,51 +30,32 @@ function openNav() {
       'background-image':
         'url(' + getImg($route.fullPath === '/' ? 'home' : $route.fullPath.substring(1)) + ')'
     }"
-    :key="name"
   >
     <header>
-      <img src="./assets/shared/logo.svg" alt="logo" />
-      <div class="hr" v-show="media === 'desktop'"></div>
+      <img src="./assets/shared/logo.svg" alt="logo" class="logo" />
+      <div class="hr"></div>
+      
       <img
         src="./assets/shared/icon-hamburger.svg"
-        alt="hamburger"
-        v-show="media === 'mobile'"
+        alt="burger"
+        class="burger"
         @click="openNav"
-      />
-      <nav v-show="mobNav" id="mobile-nav">
-        <ul>
-          <li class="close" @click="closeNav">
-            <img src="./assets/shared/icon-close.svg" alt="" />
-          </li>
+        v-show="!nav"
+        />
+        <nav id="desktop-nav" v-show="nav">
+          <img src="./assets/shared/icon-close.svg" alt="" class="close" @click="closeNav"/>
           <RouterLink to="/">
-            <li>00 <span>Home</span></li></RouterLink
+            00 <span>Home</span></RouterLink
           >
           <RouterLink to="/destination">
-            <li>01 <span>Destination</span></li></RouterLink
+            01 <span>Destination</span></RouterLink
           >
           <RouterLink to="crew"
-            ><li>02 <span>Crew</span></li></RouterLink
+            >02 <span>Crew</span></RouterLink
           >
           <RouterLink to="technology"
-            ><li>03 <span>Technology</span></li></RouterLink
+            >03 <span>Technology</span></RouterLink
           >
-        </ul>
-      </nav>
-      <nav :class="{ hide: media === 'mobile' }" id="desktop-nav">
-        <ul>
-          <RouterLink to="/">
-            <li>00 <span>Home</span></li></RouterLink
-          >
-          <RouterLink to="/destination">
-            <li>01 <span>Destination</span></li></RouterLink
-          >
-          <RouterLink to="crew"
-            ><li>02 <span>Crew</span></li></RouterLink
-          >
-          <RouterLink to="technology"
-            ><li>03 <span>Technology</span></li></RouterLink
-          >
-        </ul>
       </nav>
     </header>
     <div class="container">
@@ -98,10 +69,12 @@ function openNav() {
   font-family: Bellefair;
   src: url(./assets/fonts/Bellefair-Regular.ttf);
 }
+
 @font-face {
   font-family: BarlowCondensed;
   src: url(./assets/fonts/BarlowCondensed-Regular.ttf);
 }
+
 :root {
   --dark-color: #d2d8f9;
   --main-font: 'BarlowCondensed';
@@ -111,6 +84,7 @@ function openNav() {
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -119,11 +93,11 @@ body {
 }
 
 main {
-  background-repeat: no-repeat;
+  min-height: 100vh;
   background-size: cover;
+  background-repeat: no-repeat;
   transition: all 0.5s ease-in-out;
   color: white;
-  min-height: 100vh;
 }
 
 section {
@@ -144,7 +118,6 @@ h1 {
   font-family: var(--second-font);
   font-weight: 100;
 }
-
 h2 {
   font-size: 1.75rem;
   font-family: var(--second-font);
@@ -152,21 +125,12 @@ h2 {
   letter-spacing: 4.75px;
   font-weight: 100;
 }
-
 h3 {
   font-family: var(--second-font);
   letter-spacing: 2.75px;
   font-size: 1.75rem;
   font-weight: 100;
-  text-transform: uppercase;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
   padding-top: 2rem;
-}
-
-li:not(span) {
-  font-weight: bold;
 }
 
 h3 span {
@@ -181,6 +145,14 @@ p {
   color: var(--dark-color);
   line-height: 1.5;
   font-size: 1.4rem;
+}
+
+.hide {
+  display: none;
+}
+
+a{
+  all: unset;
 }
 
 .hr {
@@ -205,96 +177,76 @@ header {
   padding-top: 2rem;
 }
 
-header img {
-  width: 50px;
+header .logo {
   padding: 2rem 3rem;
 }
 
-header nav#desktop-nav {
-  width: 50%;
-  background: rgba(83, 101, 136, 0.32);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  padding: 0 4rem;
-}
-
 header nav {
-  width: 50%;
   background: rgba(83, 101, 136, 0.32);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   padding: 0 4rem;
-}
-
-ul {
   display: flex;
   gap: 3rem;
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 1rem;
 }
 
-nav#mobile-nav {
-  z-index: 200;
-  width: 100%;
-  padding: 3rem 0;
-  text-align: center;
-  background-color: rgb(27, 27, 27, 0.8);
-  position: absolute;
-  top: 0;
-  right: 0;
+.burger, .close{
+    z-index: 1;
+    &:hover{
+      cursor: pointer;
+    }
 }
 
-nav#mobile-nav ul {
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.close{
+  align-self: end;
 }
-nav#mobile-nav li {
-  font-size: 2rem;
+.burger{
+  padding-right: 2rem;
 }
 
-.close {
-  align-self: start;
-  width: 30px;
-  padding: 0;
-}
-
-header ul {
-  width: 40%;
-}
-header li {
-  padding: 2rem 0 2rem;
-}
-
-li {
+nav a{
   white-space: nowrap;
   font-family: var(--main-font);
   text-transform: uppercase;
-  font-size: 1rem;
   letter-spacing: 2.75px;
-  color: white;
+  padding:2rem 0;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
-li:hover {
-  cursor: pointer;
-}
-
-li span {
+a > span{
   color: var(--dark-color);
-}
-
-a {
-  all: unset;
-}
-
-.hide {
-  display: none;
 }
 
 .router-link-active {
   border-bottom: 2px solid white;
+}
+@media (max-width:1024px) {
+  header nav{
+    padding:2rem 1rem ;
+    width: 70%;
+    background: rgba(83, 101, 136, 0.8);
+    flex-direction: column;
+    position: absolute;
+    top: 0  ;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+  .burger{
+    display: block;
+  }
+  .hr{
+    display: none;
+  }
+}
+
+@media (width > 1024px) {
+  .burger,.close{
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -302,10 +254,16 @@ a {
     width: 90%;
     margin: 0 auto;
   }
-
-  h3 {
-    font-size: 1rem;
-    text-align: center;
+  
+  h2 {
+    font-size: 0.8rem;
+  }
+  h3{
+    font-size: 0.7rem;
+    white-space: wrap;
+  }
+  h4{
+    font-size: 0.6rem;
   }
   p {
     font-size: 0.9rem;
