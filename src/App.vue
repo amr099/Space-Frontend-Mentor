@@ -221,6 +221,9 @@ header nav {
 
 .close{
   align-self: end;
+  margin-top: 2rem;
+  margin-right: 1rem;
+
 }
 .burger{
   padding-right: 2rem;
@@ -243,6 +246,8 @@ a > span{
 
 .router-link-active {
   border-bottom: 2px solid white;
+  padding-left: 1rem;
+
 }
 @media (max-width:1024px) {
   header nav{
@@ -253,9 +258,15 @@ a > span{
     position: absolute;
     top: 0  ;
     right: 0;
-    justify-content: center;
-    align-items: center;
+    padding-left: 2rem;
+    align-items: start;
     z-index: 1;
+    a{
+      &:hover{
+        padding-left: 1rem;
+      }
+
+    }
   }
   .burger{
     display: block;

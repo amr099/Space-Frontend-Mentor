@@ -119,6 +119,7 @@ section {
 
 ul{
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: start;
   padding: 0;
@@ -207,7 +208,9 @@ li{
     font-size: 1rem;
     margin-right:0.2rem ;
   }
-
+  h1{
+    font-size: 3rem;
+  }
   h2{
     font-size: 0.8rem;
   }

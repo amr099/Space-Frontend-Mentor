@@ -111,7 +111,7 @@ li{
 
 .content {
   padding-bottom: 3rem;
-  width: min-content;
+  width: 50%;
 }
 
 .img {

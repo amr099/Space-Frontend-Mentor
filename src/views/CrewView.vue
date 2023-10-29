@@ -90,7 +90,7 @@ ul {
 }
 
 .content {
-  width: min-content;
+  width: 50%;
   padding-top: 5rem;
   padding-bottom: 3rem;
   display: flex;
@@ -153,7 +153,6 @@ li {
     position: relative;
     bottom: 0;
     width: 100%;
-    height: 100vh;
   }
 }
 
