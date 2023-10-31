@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 
 let media = ref('desktop')
-let nav = ref(true)
+let nav = ref(false)
 
 
 
@@ -39,12 +39,12 @@ function closeNav(){
       <img
         src="./assets/shared/icon-hamburger.svg"
         alt="burger"
-        class="burger"
+        class="burger nav-icon"
         @click="openNav"
         v-show="!nav"
         />
+        <img src="./assets/shared/icon-close.svg" alt="" class="close nav-icon" @click="closeNav" v-show="nav"/>
         <nav id="desktop-nav" v-show="nav">
-          <img src="./assets/shared/icon-close.svg" alt="" class="close" @click="closeNav"/>
           <RouterLink to="/">
             00 <span>Home</span></RouterLink
           >
@@ -203,7 +203,7 @@ header .logo {
   padding: 2rem 3rem;
 }
 
-header nav {
+nav {
   background: rgba(83, 101, 136, 0.32);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
@@ -212,21 +212,15 @@ header nav {
   gap: 3rem;
 }
 
-.burger, .close{
-    z-index: 1;
+.nav-icon{
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  width: 30px;
+  z-index: 2;
     &:hover{
       cursor: pointer;
     }
-}
-
-.close{
-  align-self: end;
-  margin-top: 2rem;
-  margin-right: 1rem;
-
-}
-.burger{
-  padding-right: 2rem;
 }
 
 nav a{
@@ -246,11 +240,9 @@ a > span{
 
 .router-link-active {
   border-bottom: 2px solid white;
-  padding-left: 1rem;
-
 }
 @media (max-width:1024px) {
-  header nav{
+  nav{
     padding:2rem 1rem ;
     width: 70%;
     background: rgba(83, 101, 136, 0.8);
@@ -300,6 +292,13 @@ a > span{
   }
   p {
     font-size: 0.9rem;
+  }
+  header nav{
+    padding:0 1.5rem;
+  }
+  .nav-icon{
+    right: 1rem;
+    width: 20px;
   }
 }
 
