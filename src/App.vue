@@ -5,11 +5,21 @@ import { RouterLink, RouterView } from 'vue-router'
 let media = ref('desktop')
 let nav = ref(true)
 
-
+window.addEventListener('resize', () => {
+  let m = window.innerWidth
+  if (m <= 1024 && m > 769) {
+    media.value = 'tablet'
+  } else if (m <= 769) {
+    media.value = 'mobile'
+  } else {
+    media.value = 'desktop'
+  }
+})
 
 function getImg(name) {
   let imageUrl = new URL(`./assets/${name}/background-${name}-${media.value}.jpg`, import.meta.url)
-    .href
+  .href
+  console.log(imageUrl)
   return imageUrl
 }
 
