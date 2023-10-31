@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 
 let media = ref('desktop')
-let nav = ref(false)
+let nav = ref(true)
 
 
 
@@ -20,6 +20,7 @@ function openNav(){
 function closeNav(){
   nav.value = false
 }
+
 
 
 </script>
@@ -43,7 +44,7 @@ function closeNav(){
         @click="openNav"
         v-show="!nav"
         />
-        <img src="./assets/shared/icon-close.svg" alt="" class="close nav-icon" @click="closeNav" v-show="nav"/>
+        <img src="./assets/shared/icon-close.svg" alt="" class="close nav-icon " @click="closeNav" v-show="nav"/>
         <nav id="desktop-nav" v-show="nav">
           <RouterLink to="/">
             00 <span>Home</span></RouterLink
