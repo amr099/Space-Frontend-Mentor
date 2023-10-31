@@ -199,8 +199,8 @@ header {
   padding-top: 2rem;
 }
 
-header .logo {
-  padding: 2rem 3rem;
+.logo {
+  margin: 2rem 3rem;
 }
 
 nav {
@@ -299,6 +299,10 @@ a > span{
   .nav-icon{
     right: 1rem;
     width: 20px;
+  }
+  .logo {
+    margin: 1rem;
+    width: 35px;
   }
 }
 
