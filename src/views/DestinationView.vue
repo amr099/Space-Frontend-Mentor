@@ -70,12 +70,12 @@ function load(i) {
         :key="planetData?.images.png"
       ></div>
       <div class="details">
-          <ul>
-            <li @click="load(0)" :class="{ selected: planetData.name === 'Moon' }">Moon</li>
-            <li @click="load(1)" :class="{ selected: planetData.name === 'Mars' }">Mars</li>
-            <li @click="load(2)" :class="{ selected: planetData.name === 'Europa' }">Europa</li>
-            <li @click="load(3)" :class="{ selected: planetData.name === 'Titan' }">Titan</li>
-          </ul>
+        <ul>
+          <li @click="load(0)" :class="{ selected: planetData.name === 'Moon' }">Moon</li>
+          <li @click="load(1)" :class="{ selected: planetData.name === 'Mars' }">Mars</li>
+          <li @click="load(2)" :class="{ selected: planetData.name === 'Europa' }">Europa</li>
+          <li @click="load(3)" :class="{ selected: planetData.name === 'Titan' }">Titan</li>
+        </ul>
         <h1>{{ planetData?.name }}</h1>
         <p>
           {{ planetData?.description }}
@@ -96,6 +96,11 @@ function load(i) {
   </section>
 </template>
 <style scoped>
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 h1 {
   font-size: 4rem;
 }
@@ -114,10 +119,9 @@ section {
   justify-content: space-around;
   align-items: stretch;
   padding-bottom: 3rem;
-
 }
 
-ul{
+ul {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -132,13 +136,15 @@ ul{
   background-position: center;
   background-repeat: no-repeat;
   transition: all 0.5s ease-in-out;
+  animation: rotate infinite 15s forwards linear;
 }
 .details {
   width: 40%;
 }
 
 h2,
-h4,li {
+h4,
+li {
   margin-top: 1rem;
   letter-spacing: 2px;
   font-family: var(--second-font);
@@ -149,17 +155,17 @@ h4 {
   font-size: 0.8rem;
 }
 
-h2{
+h2 {
   font-size: 1.2rem;
 }
 
-li{
+li {
   font-size: 1.4rem;
   margin-right: 1rem;
   list-style: none;
-  &:hover{
-    cursor: pointer;
-  }
+}
+li:hover {
+  cursor: pointer;
 }
 .info {
   display: flex;
@@ -184,7 +190,7 @@ li{
     width: 100%;
     height: 30vh;
   }
-  ul{
+  ul {
     justify-content: space-between;
   }
   .details {
@@ -204,20 +210,20 @@ li{
   .content {
     padding-top: 2rem;
   }
-  li{
+  li {
     font-size: 1rem;
-    margin-right:0.2rem ;
+    margin-right: 0.2rem;
   }
-  h1{
+  h1 {
     font-size: 3rem;
   }
-  h2{
+  h2 {
     font-size: 0.8rem;
   }
-  h4{
+  h4 {
     font-size: 0.6rem;
   }
-  
+
   .details {
     width: 100%;
   }
